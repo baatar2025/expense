@@ -1,6 +1,14 @@
-import React from 'react'
+import Link from 'next/link'
+import React, { useMemo, useState } from 'react'
 
 export const Currency = () => {
+    const [valut,setvalut]=useState('');
+    const set= [
+        'USD -- Америк доллар','EUR -- Eвро','CNY -- Хятадын юань','GBP -- Английн фунт','RUB -- Оросын рубль','KRW -- БНСУ-ын вон','CAD -- Канад доллар','NZD -- Шинэ Зеландын Доллар','AUD -- Австрали доллар','JPY -- Японы иен','HKD -- Гонконг доллар','SGD -- Сингапур доллар','CHF -- Швейцарь франк','SEK -- Швед крон','AUG -- ','TRY -- Туркийн Лир','THB -- Тайландын бат','MNT -- Mongolia tugrug'
+    ]
+// useMemo(()=>{
+//     console.log(valut)
+// },[valut])
   return (
     <div className='mt-10'>
         <div className=' flex justify-center mb-16'>
@@ -38,9 +46,16 @@ export const Currency = () => {
             </p>
         </div>
         <div className='flex justify-center'>
-            <select className='w-96 h-10 mb-10'>
-                <option value="MNT - Mongolian Tugrik">MNT - Mongolian Tugrik</option>
-                <option value="MNT - Mongolian Tugrik">MNT - Mongolian Tugrik</option>
+            <select className='w-96 h-10 mb-10' onChange={(e)=>{
+                setvalut(e.target.value)
+            }}>
+                {
+                    set.map((props)=>{
+                        return(
+                            <option>{props}</option>
+                        )
+                    })
+                }
             </select>
         </div>
         <div className='flex justify-center'>
@@ -49,9 +64,11 @@ export const Currency = () => {
             </p>
         </div>
         <div className=' flex justify-center'>
-            <button className=' bg-blue-500 text-white rounded-2xl p-2 w-96'>
+          <Link href='./steptwo'>
+          <button className=' bg-blue-500 text-white rounded-2xl p-2 w-96'>
             Confirm 
             </button>
+          </Link>  
         </div>
     </div>
         
